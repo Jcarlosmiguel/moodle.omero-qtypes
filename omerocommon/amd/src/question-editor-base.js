@@ -230,9 +230,10 @@ define([
                     // prepare and display error messages
                     if (errors.length > 0) {
                         var errorMessage = "";
-                        for (var i in errors)
+                        for (var i in errors) {
                             errorMessage += '<i class="glyphicon glyphicon-thumbs-down red"></i>  ' + errors[i] + '<br>';
                         me._showDialogMessage(errorMessage);
+                        }
                     }
                     return errors.length === 0;
 
@@ -276,22 +277,29 @@ define([
             for (var i in this._answers) {
                 var data = this._answers[i].getDataToSubmit();
                 var fraction = parseFloat(data.fraction);
-                if (fraction > max_fraction)
+                if (fraction > max_fraction) {
                     max_fraction = fraction;
-                if (fraction == 1)
+                }
+                if (fraction == 1) {
                     found_max += 1;
-                if (fraction > 0) // only positive matter
+                }
+                if (fraction > 0) {// only positive matter
                     total_fraction += fraction;
+                }
             }
 
             if (single_correct_answer) {
-                if (found_max === 0)
+                if (found_max === 0) {
                     errors.push(M.util.get_string('validate_at_least_one_100', 'qtype_omerocommon'));
-                else if (found_max > 1)
+                }
+                else if (found_max > 1) {
                     errors.push(M.util.get_string('validate_at_least_one_100', 'qtype_omerocommon'));
-            } else {
-                if (total_fraction != 1)
+                }
+            } 
+            else {
+                if (total_fraction != 1) {
                     errors.push(M.util.get_string('validate_sum_of_grades', 'qtype_omerocommon'));
+                }
             }
 
             return errors;
@@ -322,8 +330,9 @@ define([
                         var no_answers = $(e.target).attr("value");
                         console.log("Click on ADD Answer no.", no_answers);
                         window.last = e.target;
-                        if (!no_answers)
+                        if (!no_answers) {
                             console.warn("The number of answer to add seems to be undefined!!!");
+                        }
                         else {
                             no_answers = parseInt(no_answers);
                             for (var i = 1; i <= no_answers; i++) {
@@ -390,8 +399,12 @@ define([
         };
 
         prototype.onLockImageChanged = function (locked) {
-            if (locked) this.lockImage();
-            else this.unlockImage();
+            if (locked) {
+                this.lockImage();
+            }
+            else {
+                this.unlockImage();
+            }
         };
 
         prototype.updateViewCenter = function () {
@@ -455,14 +468,16 @@ define([
                 }
             }
 
-            if (!disable_animiation)
+            if (!disable_animiation) {
                 $('html, body').animate({
                     scrollTop: $("#" + answer_uuid).offset().top - 125
                 }, 1000);
+            }
 
             // callback for the event onAddAnswer
-            if (this.onAddAnswer)
+            if (this.onAddAnswer) {
                 this.onAddAnswer(answer);
+            }
 
             return answer;
         };
@@ -476,8 +491,9 @@ define([
                 if (answer) {
                     // find the header of the option above the one to delete
                     for (i in this._answer_ids) {
-                        if (this._answer_ids[i]._answer_number === answer_id)
+                        if (this._answer_ids[i]._answer_number === answer_id) {
                             break;
+                        }
                         last_answer_header = this._answer_ids[i]._answer_head;
                     }
                     // perform deletion
@@ -492,13 +508,16 @@ define([
                         delete this._editor[i];
                     }
                     // scrollTop to the the option above the one deleted
-                    if (last_answer_header !== undefined)
+                    if (last_answer_header !== undefined) {
                         $('html, body').animate({
                             scrollTop: last_answer_header.offset().top - 125
                         }, 1000);
+                    }
 
                     // callback for the event onRemoveAnswer
-                    if (this.onRemoveAnswer) this.onRemoveAnswer(answer);
+                    if (this.onRemoveAnswer) {
+                        this.onRemoveAnswer(answer);
+                    }
                     return true;
                 }
             }
@@ -529,8 +548,9 @@ define([
             me._image_info_container.html(image_info_container);
 
             // clean the existing image-viewer controller
-            if (me._image_viewer_controller)
+            if (me._image_viewer_controller) {
                 delete me._image_viewer_controller;
+            }
 
             // build the ImaveViewer controller
             var viewer_ctrl = new ImageViewer(
@@ -620,14 +640,21 @@ define([
 
         prototype.onRoiShapePropertyChanged = function (event, property, visible) {
             if (event.shape[property]) {
-                if (property === "visible") this._image_viewer_controller.showRoiShapes([event.shape.id]);
-                if (visible.indexOf(event.shape.id) === -1)
+                if (property === "visible") {
+                    this._image_viewer_controller.showRoiShapes([event.shape.id]);
+                }
+                if (visible.indexOf(event.shape.id) === -1) {
                     visible.push(event.shape.id);
-            } else {
-                if (property === "visible") this._image_viewer_controller.hideRoiShapes([event.shape.id]);
+                }
+            } 
+            else {
+                if (property === "visible") {
+                    this._image_viewer_controller.hideRoiShapes([event.shape.id]);
+                }
                 var index = visible.indexOf(event.shape.id);
-                if (index > -1)
+                if (index > -1) {
                     visible.splice(index, 1);
+                }
             }
         };
 
@@ -651,8 +678,10 @@ define([
                     console.error(e);
                     me._image_properties = {};
                 }
-            } else me._image_properties = {};
-
+            } 
+            else {
+                me._image_properties = {};
+            }
             $("#omero-image-viewer-properties").html(me.getFormattedImageProperties());
 
             $("#omero-image-properties-update").click(function () {

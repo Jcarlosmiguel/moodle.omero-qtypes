@@ -53,9 +53,9 @@ define([
 
             // avoids YUI editor initialization
             // (useful when the editor already exists)
-            if (!avoid_editor_init)
+            if (!avoid_editor_init){
                 me._editor.init();
-
+            }
 
             /**
              * Clear the current text area

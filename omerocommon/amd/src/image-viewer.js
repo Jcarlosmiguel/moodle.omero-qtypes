@@ -46,8 +46,9 @@ define([
                     listenerCallback(data);
                 }
             }
-            if (callback)
+            if (callback) {
                 callback(data);
+            }
         }
 
         // defines the basic package
@@ -166,8 +167,9 @@ define([
                         me._image_details = data;
 
                         // loads rois if required
-                        if (load_rois)
+                        if (load_rois) {
                             me.loadROIs(callback);
+                        }
                         else {
                             // notifies listeners
                             notifyListeners(me._listeners, callback);
@@ -268,11 +270,12 @@ define([
          */
         prototype.getImageDetails = function (callback) {
             var me = this;
-            if (callback)
+            if (callback) {
                 me._model.getImageDetails(function (data) {
                     me._image_details = data;
                     callback(data);
                 });
+            }
             return me._image_details;
         };
 
@@ -308,8 +311,9 @@ define([
         };
 
         prototype.disableMarkingTool = function () {
-            if (!this._lock_navigation)
+            if (!this._lock_navigation) {
                 this._annotations_controller.disableMouseEvents();
+            }
         };
 
         prototype.removeMarker = function (marker_id) {
@@ -339,9 +343,12 @@ define([
         };
 
         prototype.getMarkerIds = function () {
-            if (this._annotations_controller.getMarkersID)
+            if (this._annotations_controller.getMarkersID) {
                 return this._annotations_controller.getMarkersID();
-            else return [];
+            }
+            else {
+                return [];
+            }
         };
 
         prototype.getMarkers = function () {
@@ -363,7 +370,9 @@ define([
             var shapes = this._annotations_controller.getShapes(filter);
             for (var i in shapes) {
                 var shape = shapes[i];
-                if (markers.indexOf(shape.id) !== -1) continue;
+                if (markers.indexOf(shape.id) !== -1) {
+                    continue;
+                }
                 result.push(shape);
             }
             return result;
@@ -377,7 +386,9 @@ define([
                     marker.shape_id, marker.center_x, marker.center_y,
                     marker.radius, undefined, marker_config, true);
                 this._visible_roi_shape_ids.push(String(marker.shape_id));
-            } else console.warn("Marker not supported yet", marker);
+            } else {
+                console.warn("Marker not supported yet", marker);
+            }
         };
 
         /**
@@ -480,13 +491,14 @@ define([
             if (fixed) {
                 for (var i in shape_id_list) {
                     var shape = this._annotations_controller.getShape(shape_id_list[i]);
-                    if (shape)
+                    if (shape) {
                         shape.disableEvents();
-                }
+                    }
             }
             for (var j in shape_id_list) {
-                if (this._visible_roi_shape_ids.indexOf(String(shape_id_list[j])) === -1)
+                if (this._visible_roi_shape_ids.indexOf(String(shape_id_list[j])) === -1) {
                     this._visible_roi_shape_ids.push(String(shape_id_list[j]));
+                }
             }
         };
 
@@ -498,8 +510,9 @@ define([
             this._annotations_controller.hideShapes(shape_id_list, true);
             for (var j in shape_id_list) {
                 var index = this._visible_roi_shape_ids.indexOf(String(shape_id_list[j]));
-                if (index !== -1)
+                if (index !== -1) {
                     this._visible_roi_shape_ids.splice(index, 1);
+                }
             }
         };
 
@@ -520,7 +533,9 @@ define([
          * @private
          */
         prototype._addVisibleRoiShapes = function (roi_ids) {
-            if (!roi_ids.split) roi_ids = "" + [roi_ids];
+            if (!roi_ids.split) {
+                roi_ids = "" + [roi_ids];
+            }
             if (roi_ids !== undefined && roi_ids.length > 0) {
                 var roi_id_list = roi_ids.split(",");
                 for (var i in roi_id_list) {
@@ -546,8 +561,9 @@ define([
          * @private
          */
         prototype._removeVisibleRoiShapes = function (roi_ids) {
-            if (!roi_ids.split)
+            if (!roi_ids.split) {
                 delete this._visible_roi_shape_list[roi_ids];
+            }
             else if (roi_ids !== undefined && roi_ids.length > 0) {
                 var roi_id_list = roi_ids.split(",");
                 for (var i in roi_id_list) {

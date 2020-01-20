@@ -76,8 +76,9 @@ define(['jquery'], function ($) {
         prototype.removeEventListener = function (listener) {
             if (listener) {
                 var index = this._listeners.indexOf(listener);
-                if (index > -1)
+                if (index > -1){
                     this._listeners.splice(index, 1);
+                }
             }
         };
 
@@ -131,7 +132,7 @@ define(['jquery'], function ($) {
                     }
 
                     // Notify event
-                    if (event_name && event_name.length > 0)
+                    if (event_name && event_name.length > 0){
                         me._notifyListeners(new CustomEvent(
                             event_name,
                             {
@@ -139,6 +140,7 @@ define(['jquery'], function ($) {
                                 bubbles: true
                             })
                         );
+                    }
                 },
                 error: error_callback
             });
