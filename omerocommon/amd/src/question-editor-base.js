@@ -295,7 +295,7 @@ define([
                 else if (found_max > 1) {
                     errors.push(M.util.get_string('validate_at_least_one_100', 'qtype_omerocommon'));
                 }
-            } 
+            }
             else {
                 if (total_fraction != 1) {
                     errors.push(M.util.get_string('validate_sum_of_grades', 'qtype_omerocommon'));
@@ -646,7 +646,7 @@ define([
                 if (visible.indexOf(event.shape.id) === -1) {
                     visible.push(event.shape.id);
                 }
-            } 
+            }
             else {
                 if (property === "visible") {
                     this._image_viewer_controller.hideRoiShapes([event.shape.id]);
@@ -678,7 +678,7 @@ define([
                     console.error(e);
                     me._image_properties = {};
                 }
-            } 
+            }
             else {
                 me._image_properties = {};
             }

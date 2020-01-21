@@ -352,14 +352,14 @@ define(['jquery'],
                     // Resolve string input to bitwise e.g. 'ENT_IGNORE' becomes 4
                     if (OPTS[quote_style[i]] === 0) {
                         noquotes = true;
-                    } 
+                    }
                     else if (OPTS[quote_style[i]]) {
-                        optTemp = optTemp | OPTS[quote_style[i]];
+                        optTemp = optTemp | OPTS[quote_style[i]]; //eslint-disable-line no-bitwise
                     }
                 }
                 quote_style = optTemp;
             }
-            if (quote_style & OPTS.ENT_HTML_QUOTE_SINGLE) {
+            if (quote_style & OPTS.ENT_HTML_QUOTE_SINGLE) { //eslint-disable-line no-bitwise
                 string = string.replace(/'/g, '&#039;');
             }
             if (!noquotes) {

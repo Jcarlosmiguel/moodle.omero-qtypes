@@ -251,7 +251,7 @@ define([
                                 console.log("AttoEditor of " +
                                     me.input_data_element_name + " seems initialized!", "Attempt: " + (count));
                                 clearTimeout(timeoutVar);
-                            } 
+                            }
                             else {
                                 console.log("AttoEditor of " +
                                     me.input_data_element_name + " seems not initialized!", "Attempt: " + (++count));
@@ -266,7 +266,7 @@ define([
                 if (!data_element) {
                     console.warn("AttoEditor of " + me.input_data_element_name + " seems not initialized!");
                     return undefined;
-                } 
+                }
                 else {
                     return data_element.innerHTML;
                 }

@@ -126,7 +126,7 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
             // Sets the endpoint to get the ROI infos
             //me.table_container.attr("data-url", _getRoiShapeDetailInfoUrl());
 
-            if (!hideToolbar) { 
+            if (!hideToolbar) {
                 me.showToolbar();
             }
             else {
@@ -430,4 +430,3 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
         return M.qtypes.omerocommon.FeedbackImageTable;
     }
 );
-

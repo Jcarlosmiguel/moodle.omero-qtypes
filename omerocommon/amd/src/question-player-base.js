@@ -226,7 +226,7 @@ define([
 
             var unavailable_rois = [];
             $.each(unavailable_roi_list, function (i, el) {
-                if ($.inArray(String(el), unavailable_rois) === -1){ 
+                if ($.inArray(String(el), unavailable_rois) === -1) {
                     unavailable_rois.push(String(el));
                 }
             });

@@ -240,4 +240,3 @@ define(['jquery'], function ($) {
         return M.qtypes.omerocommon.ImageModelManager;
     }
 );
-
