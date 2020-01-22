@@ -139,12 +139,10 @@ define([
         prototype.show = function () {
             // the reference to this scope
             var me = this;
-            if (!me._answer_container) {
-                me._build();
-            }
-            else {
-                me._answer_list_container.append(me._answer_container);
-            }
+            if (!me._answer_container){
+                me._build();}
+            else{
+                me._answer_list_container.append(me._answer_container);}
         };
 
         /**
@@ -153,9 +151,8 @@ define([
         prototype.hide = function () {
             // the reference to this scope
             var me = this;
-            if (me._answer_container) {
-                me._answer_container.remove();
-            }
+            if (me._answer_container){
+                me._answer_container.remove();}
         };
 
         prototype.addListener = function (listener) {
@@ -164,9 +161,8 @@ define([
 
         prototype.removeListener = function (listener) {
             var index = this._listeners.indexOf(listener);
-            if (index !== -1) {
-                this._listeners.splice(index, 1);
-            }
+            if (index !== -1){
+                this._listeners.splice(index, 1);}
         };
 
         prototype._notifyListeners = function (event) {
@@ -175,9 +171,8 @@ define([
 
         prototype.getDataToSubmit = function () {
             var data = {};
-            for (var n in this._data) {
-                data[n] = this._data[n];
-            }
+            for (var n in this._data){
+                data[n] = this._data[n];}
             return data;
         };
 
@@ -189,9 +184,8 @@ define([
          */
         prototype._getFeedbackImages = function () {
             var images = [];
-            for (var i in this._feedback_images) {
-                images.push(this._feedback_images[i]);
-            }
+            for (var i in this._feedback_images){
+                images.push(this._feedback_images[i]);}
             return images;
         };
 
@@ -213,9 +207,8 @@ define([
          * @private
          */
         prototype._addFeedbackImage = function (image) {
-            if (image && !this._feedback_images[image.id]) {
-                this._feedback_images[image.id] = image;
-            }
+            if (image && !this._feedback_images[image.id]){
+                this._feedback_images[image.id] = image;}
         };
 
         /**
@@ -226,9 +219,8 @@ define([
          */
         prototype._removeFeedbackImage = function (image) {
             console.log("Deleting image", image);
-            if (image) {
-                delete this._feedback_images[image.id];
-            }
+            if (image){
+                delete this._feedback_images[image.id];}
         };
 
         /**
@@ -239,9 +231,8 @@ define([
          */
         prototype.getEditorsMap = function () {
             var result = {};
-            for (var i in this._editors_map) {
-                result[this._answer_number + "_" + i] = this._editors_map[i];
-            }
+            for (var i in this._editors_map){
+                result[this._answer_number + "_" + i] = this._editors_map[i];}
             return result;
         };
 
@@ -271,9 +262,7 @@ define([
                 var element_name = this._answer_properties[i];
                 var element = me.findFormInputElement(element_name, answer_index);
                 data[element_name] = element.val();
-                if (remove_form_inputs) {
-                    element.remove();
-                }
+                if (remove_form_inputs) {element.remove();}
 
                 element = me._inputs[element_name];
                 if (element) {
@@ -327,9 +316,7 @@ define([
                 hidden = document.getElementById(id);
                 value = FormUtils.htmlspecialchars(value);
 
-                if (hidden) {
-                    hidden.setAttribute("value", value);
-                }
+                if (hidden) {hidden.setAttribute("value", value);}
                 else {
                     hidden = '<input ' + 'id="' + id + '" ' + 'name="' + name + '" type="hidden" value="' + value + '">';
                     M.qtypes.omerocommon.MoodleFormUtils.appendHiddenElement(this._answer_container, hidden);
@@ -436,18 +423,15 @@ define([
             var name = this._build_name_of(element_name);
             var value = this._data[element_name];
 
-            if (typeof value !== "undefined") {
-                value = parseFloat(value);
-            }
+            if (typeof value !== "undefined") {value = parseFloat(value);}
 
             var select = '<select ' +
                 'id="' + id + '_select" ' + 'name="' + name + '_select">';
 
-            for (var i in this._fraction_options) {
+            for (var i in this._fraction_options){
                 select += '<option value="' + i + '" ' +
                     (value == i ? 'selected="selected"' : "") + '>' +
-                    this._fraction_options[i] + '</option>';
-            }
+                    this._fraction_options[i] + '</option>';}
             select += '</select>';
             var fraction_selector = $(select);
             this._form_utils.appendElement(this._answer_container, label, fraction_selector, false);
@@ -462,7 +446,7 @@ define([
             };
         };
 
-        prototype._build_hidden_of = function (element_name, value) {
+        prototype._build_hidden_of = function (element_name, value) {// eslint-disable-line no-unused-vars
             var id = this._build_id_of(element_name);
             var name = this._build_name_of(element_name);
 

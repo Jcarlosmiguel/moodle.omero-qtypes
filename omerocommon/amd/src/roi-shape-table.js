@@ -110,12 +110,8 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
             // Sets the endpoint to get the ROI infos
             //me.table_container.attr("data-url", _getRoiShapeDetailInfoUrl());
 
-            if (!hideToolbar) {
-                me.showToolbar();
-            }
-            else {
-                me.hideToolbar();
-            }
+            if (!hideToolbar) {me.showToolbar();}
+            else {me.hideToolbar();}
 
             // Setup the responseHandler
             me.table_element.attr("data-response-handler", "M.qtypes.omerocommon.RoiShapeTableBase.responseHandler");
@@ -197,9 +193,8 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
             };
 
             //if (!showColumnSelector)
-            if (hideFocusAreas) {
-                bootstrap_config.columns[1].splice(2, 1);
-            }
+            if (hideFocusAreas){
+                bootstrap_config.columns[1].splice(2, 1);}
 
             // Initializes the bootstrap table
             me.table_element.bootstrapTable(bootstrap_config);
@@ -295,17 +290,13 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
             // Reusable function to handle visibility change
             function onRoiShapeVisibilityChanged(target, value, row) {
                 // if focus is active then visibility cannot be changed
-                if (row.visible && row.focusable) {
-                    return;
-                }
+                if (row.visible && row.focusable) {return;}
 
                 row.visible = !row.visible;
-                if (row.visible) {
-                    $(target).attr("class", "green glyphicon glyphicon-eye-open");
-                }
-                else {
-                    $(target).attr("class", "#E9E9E9 glyphicon glyphicon-eye-close");
-                }
+                if (row.visible){
+                    $(target).attr("class", "green glyphicon glyphicon-eye-open");}
+                else{
+                    $(target).attr("class", "#E9E9E9 glyphicon glyphicon-eye-close");}
 
                 notifyListeners(table, {
                     type: "roiShapeVisibilityChanged",
@@ -317,12 +308,10 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
 
             return {
                 'click .like': function (e, value, row /*, index*/) {
-                    if ($(e.target).attr("class").indexOf("glyphicon-plus-sign") !== -1) {
-                        $(e.target).attr("class", "green glyphicon glyphicon-eye-open");
-                    }
-                    else {
-                        $(e.target).attr("class", "red glyphicon glyphicon-eye-close");
-                    }
+                    if ($(e.target).attr("class").indexOf("glyphicon-plus-sign") !== -1){
+                        $(e.target).attr("class", "green glyphicon glyphicon-eye-open");}
+                    else{
+                        $(e.target).attr("class", "red glyphicon glyphicon-eye-close");}
                     console.log('You click like action, row: ' + JSON.stringify(row));
                 },
 
@@ -348,14 +337,12 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
                  */
                 'click .roi-shape-focusability': function (e, value, row /*, index*/) {
                     row.focusable = !row.focusable;
-                    if (row.focusable) {
-                        $(e.target).attr("class", "green glyphicon glyphicon-record");
-                    }
-                    else {
+                    if (row.focusable){
+                        $(e.target).attr("class", "green glyphicon glyphicon-record");}
+                    else{
                         $(e.target).attr("class", "#E9E9E9 glyphicon glyphicon-record");
-                    }
 
-                    console.log("FOCUSability changed: " + row.focusable);
+                    console.log("FOCUSability changed: " + row.focusable);}
                     notifyListeners(table, {
                         type: "roiShapeFocusabilityChanged",
                         shape: row,
@@ -503,4 +490,3 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
         return M.qtypes.omerocommon.RoiShapeTableBase;
     }
 );
-

@@ -45,9 +45,8 @@ define(['qtype_omerocommon/moodle-forms-utils'],
             this._current_language = null;
 
             // registers the id of the localized version of the element
-            if (input_data_element_name) {
-                this.input_data_element_name = input_data_element_name;
-            }
+            if (input_data_element_name){
+                this.input_data_element_name = input_data_element_name;}
 
             // id of the input element containing data
             this.input_data_locale_map_name = !locale_map_element_name
@@ -85,9 +84,8 @@ define(['qtype_omerocommon/moodle-forms-utils'],
             }
 
             // update language
-            if (current_language) {
-                this.onLanguageChanged(current_language);
-            }
+            if (current_language){
+                this.onLanguageChanged(current_language);}
 
             // register the serialization
             var me = this;
@@ -112,16 +110,12 @@ define(['qtype_omerocommon/moodle-forms-utils'],
 
         prototype.getLocaleTextMap = function () {
             var tmp = {};
-            for (var i in this._locale_text_map) {
-                tmp[i] = this._locale_text_map[i];
-            }
+            for (var i in this._locale_text_map) {tmp[i] = this._locale_text_map[i];}
             return tmp;
         };
 
         prototype.changeLanguage = function (language) {
-            if (this._current_language !== null && this._current_language !== language) {
-                this.save();
-            }
+            if (this._current_language !== null && this._current_language !== language) {this.save();}
             this._current_language = language;
         };
 
@@ -175,9 +169,8 @@ define(['qtype_omerocommon/moodle-forms-utils'],
             var serialized_text = JSON.stringify(this.getLocaleTextMap());
             for (var i = 0; i < input_elements.length; i++) {
                 var input_element = input_elements[i];
-                if (encode_text) {
-                    serialized_text = $("<div>").text(serialized_text).html();
-                }
+                if (encode_text){
+                    serialized_text = $("<div>").text(serialized_text).html();}
                 input_element.setAttribute("value", serialized_text);
             }
 

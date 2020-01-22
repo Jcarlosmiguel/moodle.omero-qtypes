@@ -272,8 +272,8 @@ define([
                 me._model.getImageDetails(function (data) {
                     me._image_details = data;
                     callback(data);
-                });
-            return me._image_details;}
+                });}
+            return me._image_details;
         };
 
         prototype.isNavigationLocked = function () {
@@ -363,7 +363,7 @@ define([
             var shapes = this._annotations_controller.getShapes(filter);
             for (var i in shapes) {
                 var shape = shapes[i];
-                if (markers.indexOf(shape.id) !== -1){ continue;}
+                if (markers.indexOf(shape.id) !== -1) {continue;}
                 result.push(shape);
             }
             return result;

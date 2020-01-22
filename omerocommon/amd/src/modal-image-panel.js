@@ -193,9 +193,8 @@ define(['qtype_omerocommon/image-viewer',
             // clean the old canvas
             me._image_info_container.html(me._image_info_container_template);
             // clean the old table if it exists
-            if (me._roi_shape_table) {
-                me._roi_shape_table.removeAll();
-            }
+            if (me._roi_shape_table){
+                me._roi_shape_table.removeAll();}
 
             // inzialize the viewer
             var viewer_ctrl = new ImageViewer(
@@ -227,12 +226,10 @@ define(['qtype_omerocommon/image-viewer',
                 me._image_viewer_controller.setNavigationLock(me._image_lock);
 
                 // init controls
-                if (!disable_image_properties) {
-                    me._updateImageProperties();
-                }
-                if (!disable_image_lock) {
-                    me._image_locked_element.bootstrapToggle(me._image_lock ? 'on' : 'off');
-                }
+                if (!disable_image_properties){
+                    me._updateImageProperties();}
+                if (!disable_image_lock){
+                    me._image_locked_element.bootstrapToggle(me._image_lock ? 'on' : 'off');}
                 if (me._description_textarea && !disable_description_editor) {
                     // set the current language
                     me._language_selector.val(current_language);
@@ -240,9 +237,8 @@ define(['qtype_omerocommon/image-viewer',
                     me._description_editor.init(current_language, undefined, image_description_locale_map);
                 }
 
-                if (!disable_image_lock) {
-                    $("#modalImageDialogPanel-toolbar").removeClass("hidden");
-                }
+                if (!disable_image_lock){
+                    $("#modalImageDialogPanel-toolbar").removeClass("hidden");}
 
                 // restore body overflow
                 me._body.scrollTop(0);
@@ -309,9 +305,8 @@ define(['qtype_omerocommon/image-viewer',
                 {
                     top: ($(window).height() - me._modal_image_panel.outerHeight()) / 2 + $(window).scrollTop()
                 });
-            if (auto !== undefined) {
-                this._auto_vcenter = auto === true;
-            }
+            if (auto !== undefined){
+                this._auto_vcenter = auto === true;}
         };
 
         /**
@@ -323,9 +318,8 @@ define(['qtype_omerocommon/image-viewer',
                 {
                     left: ($(window).width() - me._modal_image_panel.outerWidth()) / 2 + $(window).scrollLeft()
                 });
-            if (auto !== undefined) {
-                this._auto_hcenter = auto === true;
-            }
+            if (auto !== undefined){
+                this._auto_hcenter = auto === true;}
         };
 
         /**
@@ -343,9 +337,7 @@ define(['qtype_omerocommon/image-viewer',
          */
         prototype.maximizeHeight = function (auto) {
             this.setHeight($(window).height() - (2 * this._default_padding));
-            if (auto !== undefined) {
-                this._auto_maximize_height = auto === true;
-            }
+            if (auto !== undefined) {this._auto_maximize_height = auto === true;}
         };
 
 
@@ -354,9 +346,7 @@ define(['qtype_omerocommon/image-viewer',
          */
         prototype.maximizeWidth = function (auto) {
             this.setWidth($(window).width() - (2 * this._default_padding));
-            if (auto !== undefined) {
-                this._auto_maximize_width = auto === true;
-            }
+            if (auto !== undefined) {this._auto_maximize_width = auto === true;}
         };
 
 
@@ -374,18 +364,14 @@ define(['qtype_omerocommon/image-viewer',
          * @private
          */
         prototype._auto_resize = function () {
-            if (this._auto_maximize_height) {
-                this.maximizeHeight();
-            }
-            if (this._auto_maximize_width) {
-                this.maximizeWidth();
-            }
-            if (this._auto_hcenter) {
-                this.hcenter();
-            }
-            if (this._auto_vcenter) {
-                this.vcenter();
-            }
+            if (this._auto_maximize_height){
+                this.maximizeHeight();}
+            if (this._auto_maximize_width){
+                this.maximizeWidth();}
+            if (this._auto_hcenter){
+                this.hcenter();}
+            if (this._auto_vcenter){
+                this.vcenter();}
         };
 
 
@@ -467,20 +453,14 @@ define(['qtype_omerocommon/image-viewer',
          */
         prototype.onRoiShapePropertyChanged = function (event, property, visible) {
             if (event.shape[property]) {
-                if (property === "visible") {
-                    this._image_viewer_controller.showRoiShapes([event.shape.id]);
-                }
-                if (visible.indexOf(event.shape.id) === -1) {
-                    visible.push(event.shape.id);
-                }
+                if (property === "visible") {this._image_viewer_controller.showRoiShapes([event.shape.id]);}
+                if (visible.indexOf(event.shape.id) === -1){
+                    visible.push(event.shape.id);}
             } else {
-                if (property === "visible") {
-                    this._image_viewer_controller.hideRoiShapes([event.shape.id]);
-                }
+                if (property === "visible") {this._image_viewer_controller.hideRoiShapes([event.shape.id]);}
                 var index = visible.indexOf(event.shape.id);
-                if (index > -1) {
-                    visible.splice(index, 1);
-                }
+                if (index > -1){
+                    visible.splice(index, 1);}
             }
         };
 

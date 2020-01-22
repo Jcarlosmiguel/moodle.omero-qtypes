@@ -77,8 +77,7 @@ define(['jquery'], function ($) {
             if (listener) {
                 var index = this._listeners.indexOf(listener);
                 if (index > -1){
-                    this._listeners.splice(index, 1);
-                }
+                    this._listeners.splice(index, 1);}
             }
         };
 
@@ -139,8 +138,7 @@ define(['jquery'], function ($) {
                                 detail: data,
                                 bubbles: true
                             })
-                        );
-                    }
+                        );}
                 },
                 error: error_callback
             });

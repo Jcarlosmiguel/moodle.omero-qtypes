@@ -233,15 +233,10 @@ define([
                 console.log("Setting text: " + text + " within the textarea: " + me.input_data_element_name + "editable");
                 if(!async){
                     var data_element = document.getElementById(me.input_data_element_name + "editable");
-                    if (!data_element) {
-                        console.warn("AttoEditor of " +
-                        me.input_data_element_name + " seems not initialized!");
-                    }
-                    else {
-                        data_element.innerHTML = text;
-                    }
-                }
-                else {
+                    if (!data_element) {console.warn("AttoEditor of " +
+                        me.input_data_element_name + " seems not initialized!");}
+                    else {data_element.innerHTML = text;}
+                }else {
                     var count = 0;
                     var timeoutVar = setInterval(
                         function setText() {
@@ -251,8 +246,7 @@ define([
                                 console.log("AttoEditor of " +
                                     me.input_data_element_name + " seems initialized!", "Attempt: " + (count));
                                 clearTimeout(timeoutVar);
-                            }
-                            else {
+                            } else {
                                 console.log("AttoEditor of " +
                                     me.input_data_element_name + " seems not initialized!", "Attempt: " + (++count));
                             }
@@ -266,16 +260,12 @@ define([
                 if (!data_element) {
                     console.warn("AttoEditor of " + me.input_data_element_name + " seems not initialized!");
                     return undefined;
-                }
-                else {
-                    return data_element.innerHTML;
-                }
+                } else {return data_element.innerHTML;}
             };
 
             me.on = function (eventName, callback) {
-                if (me._yuiEditor) {
-                    me._yuiEditor.on(eventName, callback);
-                }
+                if (me._yuiEditor){
+                    me._yuiEditor.on(eventName, callback);}
             };
         };
 

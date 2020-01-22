@@ -79,9 +79,8 @@ define(['jquery'],
             }
 
             // checks the existing id (or generates it)
-            if (!(element_obj.attr("id"))) {
-                element_obj.attr("id", formUtilsClass.generateGuid());
-            }
+            if (!(element_obj.attr("id"))){
+                element_obj.attr("id", formUtilsClass.generateGuid());}
 
             // builds the root element to append to the fieldset
             var newContainerId = formUtilsClass.generateGuid();
@@ -117,14 +116,12 @@ define(['jquery'],
             var elementContainer = $(container);
 
             // checks the existing id (or generates it)
-            if (!(elementContainer.attr("id"))) {
-                elementContainer.attr("id", formUtilsClass.generateGuid());
-            }
+            if (!(elementContainer.attr("id"))){
+                elementContainer.attr("id", formUtilsClass.generateGuid());}
 
             // checks the existing id (or generates it)
-            if (!(element_obj.attr("id"))) {
-                element_obj.attr("id", formUtilsClass.generateGuid());
-            }
+            if (!(element_obj.attr("id"))){
+                element_obj.attr("id", formUtilsClass.generateGuid());}
 
             // builds the root element to append to the fieldset
             var newContainerId = formUtilsClass.generateGuid();
@@ -202,9 +199,8 @@ define(['jquery'],
          */
         formUtilsClass.initDropdown = function () {
             var dropdown = $(".dropdown-toggle");
-            if (dropdown.length) {
-                dropdown.dropdown();
-            }
+            if (dropdown.length){
+                dropdown.dropdown();}
         };
 
 
@@ -231,14 +227,12 @@ define(['jquery'],
                 var elementContainer = $(container);
 
                 // checks the existing id (or generates it)
-                if (!(elementContainer.attr("id"))) {
-                    elementContainer.attr("id", formUtilsClass.generateGuid());
-                }
+                if (!(elementContainer.attr("id"))){
+                    elementContainer.attr("id", formUtilsClass.generateGuid());}
 
                 // checks the existing id (or generates it)
-                if (!(element_obj.attr("id"))) {
-                    element_obj.attr("id", formUtilsClass.generateGuid());
-                }
+                if (!(element_obj.attr("id"))){
+                    element_obj.attr("id", formUtilsClass.generateGuid());}
 
                 elementContainer.append(element_obj);
 
@@ -352,14 +346,13 @@ define(['jquery'],
                     // Resolve string input to bitwise e.g. 'ENT_IGNORE' becomes 4
                     if (OPTS[quote_style[i]] === 0) {
                         noquotes = true;
-                    }
-                    else if (OPTS[quote_style[i]]) {
-                        optTemp = optTemp | OPTS[quote_style[i]]; //eslint-disable-line no-bitwise
+                    } else if (OPTS[quote_style[i]]) {
+                        optTemp = optTemp | OPTS[quote_style[i]];//eslint-disable-line no-bitwise
                     }
                 }
                 quote_style = optTemp;
             }
-            if (quote_style & OPTS.ENT_HTML_QUOTE_SINGLE) { //eslint-disable-line no-bitwise
+            if (quote_style & OPTS.ENT_HTML_QUOTE_SINGLE) {//eslint-disable-line no-bitwise
                 string = string.replace(/'/g, '&#039;');
             }
             if (!noquotes) {
@@ -391,9 +384,7 @@ define(['jquery'],
             //   example 1: get_html_translation_table('HTML_SPECIALCHARS');
             //   returns 1: {'"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;'}
 
-            if (!string) {
-                return false;
-            }
+            if (!string) {return false;}
 
             var hash_map = {},
                 symbol = '',

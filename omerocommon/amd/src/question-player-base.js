@@ -107,16 +107,14 @@ define([
             // register the current instance
             if (M.cfg.developerdebug) {
                 if (me.constructor != M.qtypes.omerocommon.QuestionPlayerBase){
-                    M.qtypes.omerocommon.QuestionPlayerBase.instances.push(me);
-                }
+                    M.qtypes.omerocommon.QuestionPlayerBase.instances.push(me);}
             }
         };
 
 
         // list of player instances
         if (M.cfg.developerdebug){
-            M.qtypes.omerocommon.QuestionPlayerBase.instances = [];
-        }
+            M.qtypes.omerocommon.QuestionPlayerBase.instances = [];}
 
         /* Static methods */
 
@@ -168,8 +166,7 @@ define([
             $("." + config.feedback_image_class).click(function (event) {
                 var img_el = $(event.target);
                 if (img_el.prop("tagName").toUpperCase() == "I"){
-                    img_el = img_el.parent();
-                }
+                    img_el = img_el.parent();}
                 me._modal_image_panel.center();
                 me._modal_image_panel.show(me,
                     img_el.attr("imageid"),
@@ -226,9 +223,7 @@ define([
 
             var unavailable_rois = [];
             $.each(unavailable_roi_list, function (i, el) {
-                if ($.inArray(String(el), unavailable_rois) === -1) {
-                    unavailable_rois.push(String(el));
-                }
+                if ($.inArray(String(el), unavailable_rois) === -1) {unavailable_rois.push(String(el));}
             });
             if (unavailable_rois.length > 0) {
                 if (document.location.pathname.indexOf("preview.php") !== -1) {
@@ -245,8 +240,7 @@ define([
                         M.util.get_string('validate_question', 'qtype_omerocommon') +
                         ' "' + this._config.qname + '" ' +
                         M.util.get_string('validate_player_not_existing_rois', 'qtype_omerocommon')
-                    );
-                }
+                    );}
                 this._invalidator_panel.show();
             }
         };
