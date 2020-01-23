@@ -55,12 +55,12 @@ define([
             var me = player;
             var config = me._config;
             me._image_viewer_controller.open(true, function () {
-                console.log("Question Player initialized!!!", config);
+                console.log("Question Player initialized!!!", config);// eslint-disable-line no-console
 
                 var img_size = me._image_viewer_controller.getImageSize();
                 var markers_size = ((img_size.width + img_size.height) / 2) * 0.0025;
                 markers_config.markers_size = markers_size;
-                console.log(markers_size);
+                console.log(markers_size);// eslint-disable-line no-console
 
                 me._image_viewer_controller
                     .configureMarkingTool(markers_config, 0);
@@ -115,13 +115,13 @@ define([
         prototype.initialize = function (config) {
             var me = this;
 
-            if (me.initialized) console.log("Already Initialized");
+            if (me.initialized) {console.log("Already Initialized");}// eslint-disable-line no-console
             else {
 
                 this.parent.initialize.call(this, config);
 
                 me._answer_input_name = config.answer_input_name;
-                console.log("Setted the answer prefix", me._answer_input_name);
+                console.log("Setted the answer prefix", me._answer_input_name);// eslint-disable-line no-console
 
                 // initialize image positioning control
                 $("#" + config.question_answer_container + " .restore-image-center-btn").click(function () {
@@ -129,7 +129,7 @@ define([
                 });
 
                 me.initialized = true;
-                console.log("Question multichoice player initialized!!!");
+                console.log("Question multichoice player initialized!!!");// eslint-disable-line no-console
 
                 // automatically start the player
                 start(me);
@@ -141,7 +141,7 @@ define([
             // extract configuration
             var c = document.getElementById(config_element_id);
             var config = JSON.parse(c.value);
-            console.log("QuestionPlayerMultichoice configuration", config);
+            console.log("QuestionPlayerMultichoice configuration", config);// eslint-disable-line no-console
             // start the player
             var instance = new M.qtypes.omeromultichoice.QuestionPlayerMultichoice();
             instance.initialize(config);

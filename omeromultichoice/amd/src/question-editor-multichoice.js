@@ -78,12 +78,12 @@ define([
         prototype.onImageModelRoiLoaded = function (e) {
             var message = "";
             var removed_rois = this.parent.onImageModelRoiLoaded.call(this, e);
-            if (removed_rois.visible.length > 0)
+            if (removed_rois.visible.length > 0){
                 message += "<br> - " + removed_rois.visible.join(", ") + " ( " +
-                    M.util.get_string('roi_visible', 'qtype_omerocommon') + " )";
-            if (removed_rois.focusable.length > 0)
+                    M.util.get_string('roi_visible', 'qtype_omerocommon') + " )";}
+            if (removed_rois.focusable.length > 0){
                 message += "<br> - " + removed_rois.focusable.join(", ") + " ( " +
-                    M.util.get_string('roi_focusable', 'qtype_omerocommon') + " )";
+                    M.util.get_string('roi_focusable', 'qtype_omerocommon') + " )";}
             if (message.length > 0) {
                 message = M.util.get_string('validate_editor_not_existing_rois', 'qtype_omerocommon') + message;
                 this._showDialogMessage(message);
@@ -94,14 +94,14 @@ define([
             // extract configuration
             var c = document.getElementsByName(config_element_id)[0];
             var config = JSON.parse(c.value);
-            console.log("QuestionEditorMultichoice configuration", config);
+            console.log("QuestionEditorMultichoice configuration", config);// eslint-disable-line no-console
 
             $(document).ready(
                 function () {
                     var instance = new M.qtypes.omeromultichoice.QuestionEditorMultichoice();
                     instance.initialize(config);
-                    if (M.cfg.developerdebug)
-                        window.qem = instance;
+                    if (M.cfg.developerdebug){
+                        window.qem = instance;}
                 }
             );
         };
