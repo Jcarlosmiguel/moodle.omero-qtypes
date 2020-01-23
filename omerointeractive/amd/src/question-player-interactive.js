@@ -116,7 +116,8 @@ define([
                     for (var k in config.shape_groups[group].shapes) {
                         console.log("Shape id: " + k);// eslint-disable-line no-console
                         var shape = me._image_viewer_controller.getShape(config.shape_groups[group].shapes[k]);
-                        console.log("Checking against ", shape, marked_shapes, shape.id in marked_shapes);// eslint-disable-line no-console
+                        // eslint-disable-next-line no-console
+                        console.log("Checking against ", shape, marked_shapes, shape.id in marked_shapes);
                         if (!(shape.id in marked_shapes) && shape.containsPoint(center.x, center.y)) {
                             console.log("Contained in shape " + shape.id);// eslint-disable-line no-console
                             matched_shape = {
@@ -257,7 +258,8 @@ define([
                 selector = "#" + ((f && f.attr("id")) ?
                         f.attr("id") : config.question_answer_container) + selector;
                 $(selector).each(function () {
-                    console.log("Updating properties of the ROI shape:", $(this).attr("roi-shape-id"));// eslint-disable-line no-console
+                    // eslint-disable-next-line no-console
+                    console.log("Updating properties of the ROI shape:", $(this).attr("roi-shape-id"));
                     var shape_id = $(this).attr("roi-shape-id");
                     var shape = player._image_viewer_controller.getShape(shape_id);
                     console.log("Check the current shape", shape);// eslint-disable-line no-console
