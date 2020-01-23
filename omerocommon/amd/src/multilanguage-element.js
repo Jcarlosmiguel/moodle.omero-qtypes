@@ -68,7 +68,7 @@ define(['qtype_omerocommon/moodle-forms-utils'],
                     this._locale_text_map[k] = locale_text_map[k];
                 }
             }
-            console.log(
+            console.log(// eslint-disable-line no-console
                 "Multilanguage data element: ", input_data_element_name,
                 "Current language:", current_language,
                 "Description locale map:", locale_text_map
@@ -89,17 +89,17 @@ define(['qtype_omerocommon/moodle-forms-utils'],
 
             // register the serialization
             var me = this;
-            console.log("Registering onsubmit for " + me.input_data_element_name, me);
+            console.log("Registering onsubmit for " + me.input_data_element_name, me);// eslint-disable-line no-console
             me._update_listener = function () {
                 M.qtypes.omerocommon.MultilanguageElement.serializeToFormInputs(me);
-                console.log("Object before submission", me);
+                console.log("Object before submission", me);// eslint-disable-line no-console
             };
             //document.forms[0].addEventListener("submit", me._update_listener);
         };
 
         prototype.setLocaleText = function (text, language) {
             language = language || this._current_language;
-            console.log("Setting locale string: ", this.input_data_element_name, language, text);
+            console.log("Setting locale string: ", this.input_data_element_name, language, text);// eslint-disable-line no-console
             this._locale_text_map[language] = text;
         };
 
@@ -124,25 +124,25 @@ define(['qtype_omerocommon/moodle-forms-utils'],
         };
 
         prototype.clear = function () {
-            console.warn("Not implemented at this level");
+            console.warn("Not implemented at this level");// eslint-disable-line no-console
         };
 
 
         prototype.destroy = function () {
-            console.log("destroying multilang element", this);
+            console.log("destroying multilang element", this);// eslint-disable-line no-console
             document.forms[0].removeEventListener("submit", this._update_listener);
         };
 
         prototype.getLocaleTextMapElement = function () {
             var input_element = document.forms[0].elements[this.input_data_locale_map_name];
-            console.log("Input element name", this.input_data_locale_map_name, input_element);
+            console.log("Input element name", this.input_data_locale_map_name, input_element);// eslint-disable-line no-console
             return input_element;
         };
 
 
         prototype.loadDataFromFormInputs = function (input_data_element_name) {
             var map_element = document.forms[0].elements[input_data_element_name];
-            console.log(map_element);
+            console.log(map_element);// eslint-disable-line no-console
             if (map_element) {
                 var value = map_element.getAttribute("value");
                 if (value && value.length > 0) {
@@ -151,20 +151,20 @@ define(['qtype_omerocommon/moodle-forms-utils'],
                     this._locale_text_map = {};
                 }
             } else {
-                console.error("Map element for " + input_data_element_name + " not found!!!");
+                console.error("Map element for " + input_data_element_name + " not found!!!");// eslint-disable-line no-console
             }
         };
 
         prototype.saveDataToFormInputs = function (input_data_element_name, encode_text) {
 
             input_data_element_name = input_data_element_name || this.input_data_element_name;
-            console.log("Serializing " + this.input_data_element_name + " -- " + input_data_element_name);
+            console.log("Serializing " + this.input_data_element_name + " -- " + input_data_element_name);// eslint-disable-line no-console
 
             // save the last changes
             this.save();
 
             var input_elements = document.getElementsByName(input_data_element_name);
-            console.log("Found input element", input_elements);
+            console.log("Found input element", input_elements);// eslint-disable-line no-console
 
             var serialized_text = JSON.stringify(this.getLocaleTextMap());
             for (var i = 0; i < input_elements.length; i++) {
@@ -174,7 +174,7 @@ define(['qtype_omerocommon/moodle-forms-utils'],
                 input_element.setAttribute("value", serialized_text);
             }
 
-            console.log("After update...", input_elements);
+            console.log("After update...", input_elements);// eslint-disable-line no-console
         };
 
         /**

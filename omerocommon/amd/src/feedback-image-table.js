@@ -51,10 +51,10 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
         function notifyListeners(table, event) {
             for (var i in table._event_listener_list) {
                 var callback_name = "on" + event.type.charAt(0).toUpperCase() + event.type.slice(1);
-                console.log("Listener", i, table._event_listener_list[i], callback_name);
+                console.log("Listener", i, table._event_listener_list[i], callback_name);// eslint-disable-line no-console
                 var callback = table._event_listener_list[i][callback_name];
                 if (callback) {
-                    console.log("Calling ", callback);
+                    console.log("Calling ", callback);// eslint-disable-line no-console
                     callback.call(table._event_listener_list[i], event);
                 }
             }
@@ -115,7 +115,7 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
 
             var me = this;
 
-            console.log("showColumnSelector: " + showColumnSelector);
+            console.log("showColumnSelector: " + showColumnSelector);// eslint-disable-line no-console
 
             // Registers a reference to the table container
             me.table_element = $("#" + me._table_id);
@@ -173,7 +173,7 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
                                     me.table_element.bootstrapTable('resetView');
                                     var data = me.table_element.bootstrapTable('getData'),
                                         index = $(this).parents('tr').data('index');
-                                    console.log("The updated DATA....", data[index]);
+                                    console.log("The updated DATA....", data[index]);// eslint-disable-line no-console
                                     return '';
                                 }
                             }
@@ -226,7 +226,7 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
             });
 
             me.table_element.on('all.bs.table', function (e, row, args) {
-                console.log(row, args);
+                console.log(row, args);// eslint-disable-line no-console
             });
 
             me.remove_element.click(function () {
@@ -284,7 +284,7 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
                  * @param index
                  */
                 'click .edit-image-action': function (e, value, row /*, index*/) {
-                    console.log("Editing image: " + row.id);
+                    console.log("Editing image: " + row.id);// eslint-disable-line no-console
                     notifyListeners(table, {
                         type: "editImage",
                         image: row,
@@ -301,7 +301,7 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
                  * @param index
                  */
                 'click .delete-image-action': function (e, value, row /*, index*/) {
-                    console.log("Deleting image: " + row.id);
+                    console.log("Deleting image: " + row.id);// eslint-disable-line no-console
                     notifyListeners(table, {
                         type: "deletedImage",
                         image: row,

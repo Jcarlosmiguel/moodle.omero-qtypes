@@ -75,7 +75,7 @@ define(['jquery'],
 
             // Checks whether the fieldset exists or not
             if (!container_id.length) {
-                console.error("FieldSet " + container_id + " not found!!!");
+                console.error("FieldSet " + container_id + " not found!!!");// eslint-disable-line no-console
             }
 
             // checks the existing id (or generates it)
@@ -164,7 +164,7 @@ define(['jquery'],
             var el = $("#" + element_id);
 
             if (!el.length) {
-                console.error("Element " + element_id + " doesn't exist");
+                console.error("Element " + element_id + " doesn't exist");// eslint-disable-line no-console
                 return false;
             }
 
@@ -237,7 +237,7 @@ define(['jquery'],
                 elementContainer.append(element_obj);
 
             } catch (e) {
-                console.error(e);
+                console.error(e);// eslint-disable-line no-console
             }
         };
 

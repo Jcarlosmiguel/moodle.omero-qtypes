@@ -144,7 +144,7 @@ define([
 
             // set tht configuration
             me._config = config;
-            console.log("Configuration", config);
+            console.log("Configuration", config);// eslint-disable-line no-console
 
             // identifier of the focus area container
             me._focus_areas_container = $("#" + config.focus_areas_container);
@@ -196,7 +196,7 @@ define([
          */
         prototype.start = function () {
             this._image_viewer_controller.open(true, function () {
-                console.log("ImageViewer initialized!!!");
+                console.log("ImageViewer initialized!!!");// eslint-disable-line no-console
             });
         };
 

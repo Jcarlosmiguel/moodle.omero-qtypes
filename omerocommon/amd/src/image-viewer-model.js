@@ -48,7 +48,7 @@ define(['jquery'], function ($) {
             this._listeners = [];
 
             // log init status
-            console.info("image_model_manager initialized!!!");
+            console.info("image_model_manager initialized!!!");// eslint-disable-line no-console
         };
 
 
@@ -90,13 +90,13 @@ define(['jquery'], function ($) {
          */
         prototype._notifyListeners = function (event) {
             if (event) {
-                console.log("Event", event);
+                console.log("Event", event);// eslint-disable-line no-console
                 for (var i in this._listeners) {
                     var callbackName = "on" + event.type.charAt(0).toUpperCase() + event.type.slice(1);
-                    console.log("Listener", i, this._listeners[i], callbackName);
+                    console.log("Listener", i, this._listeners[i], callbackName);// eslint-disable-line no-console
                     var callback = this._listeners[i][callbackName];
                     if (callback) {
-                        console.log("Calling ", callback);
+                        console.log("Calling ", callback);// eslint-disable-line no-console
                         callback.call(this._listeners[i], event);
                     }
                 }

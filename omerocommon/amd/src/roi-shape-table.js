@@ -51,10 +51,10 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
         function notifyListeners(table, event) {
             for (var i in table._event_listener_list) {
                 var callback_name = "on" + event.type.charAt(0).toUpperCase() + event.type.slice(1);
-                console.log("Listener", i, table._event_listener_list[i], callback_name);
+                console.log("Listener", i, table._event_listener_list[i], callback_name);// eslint-disable-line no-console
                 var callback = table._event_listener_list[i][callback_name];
                 if (callback) {
-                    console.log("Calling ", callback);
+                    console.log("Calling ", callback);// eslint-disable-line no-console
                     callback.call(table._event_listener_list[i], event);
                 }
             }
@@ -99,7 +99,7 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
 
             var me = this;
 
-            console.log("showColumnSelector: " + showColumnSelector);
+            console.log("showColumnSelector: " + showColumnSelector);// eslint-disable-line no-console
 
             // Registers a reference to the table container
             me.table_element = $("#" + me._table_id);
@@ -210,7 +210,7 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
             });
 
             me.table_element.on('click-cell.bs.table', function (table, field, e, row, index) {
-                console.log("Click on a table ROW", e, row, index);
+                console.log("Click on a table ROW", e, row, index);// eslint-disable-line no-console
                 notifyListeners(me, {
                     type: "roiShapeFocus",
                     shape: row,
@@ -239,7 +239,7 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
                 }
             });
             me.table_element.on('all.bs.table', function (e, row, args) {
-                console.log(row, args);
+                console.log(row, args);// eslint-disable-line no-console
             });
             me.remove_element.click(function () {
                 var ids = me.getIdSelections();
@@ -312,7 +312,7 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
                         $(e.target).attr("class", "green glyphicon glyphicon-eye-open");}
                     else{
                         $(e.target).attr("class", "red glyphicon glyphicon-eye-close");}
-                    console.log('You click like action, row: ' + JSON.stringify(row));
+                    console.log('You click like action, row: ' + JSON.stringify(row));// eslint-disable-line no-console
                 },
 
                 /**
@@ -342,7 +342,7 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
                     else{
                         $(e.target).attr("class", "#E9E9E9 glyphicon glyphicon-record");
 
-                    console.log("FOCUSability changed: " + row.focusable);}
+                    console.log("FOCUSability changed: " + row.focusable);}// eslint-disable-line no-console
                     notifyListeners(table, {
                         type: "roiShapeFocusabilityChanged",
                         shape: row,
@@ -361,8 +361,8 @@ define(['jquery', 'qtype_omerocommon/roi-shape-model'],
                 },
 
                 'change .answer-class': function (e, value, row, index) {
-                    console.log(e, value, row, index);
-                    console.log("Changed ROW: ", row);
+                    console.log(e, value, row, index);// eslint-disable-line no-console
+                    console.log("Changed ROW: ", row);// eslint-disable-line no-console
                 }
             };
         };

@@ -232,7 +232,7 @@ define([
                                 );
                                 break;
                             default:
-                                console.warn('Unable to handle shape type ' + shape_type);
+                                console.warn('Unable to handle shape type ' + shape_type);// eslint-disable-line no-console
                         }
                     }
                 }
@@ -359,7 +359,7 @@ define([
         prototype.getShapes = function (filter) {
             var result = [];
             var markers = this._annotations_controller.markers_id;
-            console.log("markers ids...", markers);
+            console.log("markers ids...", markers);// eslint-disable-line no-console
             var shapes = this._annotations_controller.getShapes(filter);
             for (var i in shapes) {
                 var shape = shapes[i];
@@ -377,7 +377,7 @@ define([
                     marker.shape_id, marker.center_x, marker.center_y,
                     marker.radius, undefined, marker_config, true);
                 this._visible_roi_shape_ids.push(String(marker.shape_id));
-            } else {console.warn("Marker not supported yet", marker);}
+            } else {console.warn("Marker not supported yet", marker);}// eslint-disable-line no-console
         };
 
         /**
@@ -417,7 +417,7 @@ define([
         prototype.updateViewFromProperties = function (image_properties) {
             var me = this;
             if (!image_properties || !image_properties.center) {
-                console.warn("incomplete image properties");
+                console.warn("incomplete image properties");// eslint-disable-line no-console
                 return false;
             }
 
@@ -426,12 +426,12 @@ define([
             );
             if (image_properties.zoom_level) {
                 me._viewer_controller.jumpTo(image_properties.zoom_level, image_center.x, image_center.y);
-                console.log("Setting zoom level: " + image_properties.zoom_level);
+                console.log("Setting zoom level: " + image_properties.zoom_level);// eslint-disable-line no-console
             } else {
                 me._viewer_controller.jumpToPoint(image_center.x, image_center.y);
             }
 
-            console.log("Jumping to " + image_center.x + " -- " + image_center.y);
+            console.log("Jumping to " + image_center.x + " -- " + image_center.y);// eslint-disable-line no-console
         };
 
         /**
@@ -535,7 +535,7 @@ define([
                     }
                 }
             }
-            console.log("Visible ROI list", this._visible_roi_shape_list);
+            console.log("Visible ROI list", this._visible_roi_shape_list);// eslint-disable-line no-console
         };
 
 
@@ -552,13 +552,13 @@ define([
                 var roi_id_list = roi_ids.split(",");
                 for (var i in roi_id_list) {
                     var roi_id = roi_id_list[i];
-                    console.log("ARRAY: ", this._visible_roi_shape_list);
+                    console.log("ARRAY: ", this._visible_roi_shape_list);// eslint-disable-line no-console
                     //var index = this._visible_roi_shape_list.indexOf(roi_id);
                     delete this._visible_roi_shape_list[roi_id];
-                    console.log("Removed visible roi element: ", this._visible_roi_shape_list);
+                    console.log("Removed visible roi element: ", this._visible_roi_shape_list);// eslint-disable-line no-console
                 }
             }
-            console.log("Visible ROI list", this._visible_roi_shape_list);
+            console.log("Visible ROI list", this._visible_roi_shape_list);// eslint-disable-line no-console
         };
 
 
@@ -591,7 +591,7 @@ define([
         };
 
         //
-        console.log("Initialized qtype_omerocommon/image-viewer");
+        console.log("Initialized qtype_omerocommon/image-viewer");// eslint-disable-line no-console
 
         // returns the class definition
         return M.qtypes.omerocommon.ImageViewer;

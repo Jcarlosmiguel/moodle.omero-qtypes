@@ -230,10 +230,10 @@ define([
             };
 
             me.setText = function (text, async) {
-                console.log("Setting text: " + text + " within the textarea: " + me.input_data_element_name + "editable");
+                console.log("Setting text: " + text + " within the textarea: " + me.input_data_element_name + "editable");// eslint-disable-line no-console
                 if(!async){
                     var data_element = document.getElementById(me.input_data_element_name + "editable");
-                    if (!data_element) {console.warn("AttoEditor of " +
+                    if (!data_element) {console.warn("AttoEditor of " +// eslint-disable-line no-console
                         me.input_data_element_name + " seems not initialized!");}
                     else {data_element.innerHTML = text;}
                 }else {
@@ -243,11 +243,11 @@ define([
                             var data_element = document.getElementById(me.input_data_element_name + "editable");
                             if (data_element) {
                                 data_element.innerHTML = text;
-                                console.log("AttoEditor of " +
+                                console.log("AttoEditor of " +// eslint-disable-line no-console
                                     me.input_data_element_name + " seems initialized!", "Attempt: " + (count));
                                 clearTimeout(timeoutVar);
                             } else {
-                                console.log("AttoEditor of " +
+                                console.log("AttoEditor of " +// eslint-disable-line no-console
                                     me.input_data_element_name + " seems not initialized!", "Attempt: " + (++count));
                             }
                         }, 200);
@@ -255,10 +255,10 @@ define([
             };
 
             me.getText = function () {
-                console.log("Getting text from " + "#" + me.input_data_element_name + "editable");
+                console.log("Getting text from " + "#" + me.input_data_element_name + "editable");// eslint-disable-line no-console
                 var data_element = document.getElementById(me.input_data_element_name + "editable");
                 if (!data_element) {
-                    console.warn("AttoEditor of " + me.input_data_element_name + " seems not initialized!");
+                    console.warn("AttoEditor of " + me.input_data_element_name + " seems not initialized!");// eslint-disable-line no-console
                     return undefined;
                 } else {return data_element.innerHTML;}
             };

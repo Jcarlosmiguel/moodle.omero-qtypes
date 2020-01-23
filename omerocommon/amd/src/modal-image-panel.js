@@ -100,7 +100,7 @@ define(['qtype_omerocommon/image-viewer',
             // and register the callback to handle its value changes
             if (!me._image_locked_element) {
                 me._image_locked_element = $("#" + me._modal_image_selector_id + "-view-lock");
-                console.log(me._image_locked_element);
+                console.log(me._image_locked_element);// eslint-disable-line no-console
                 me._image_locked_element.change(function () {
                     me._image_locked_element.val($(this).prop('checked') ? 1 : 0);
                     me._image_lock = $(this).prop('checked') ? true : false;
@@ -388,19 +388,19 @@ define(['qtype_omerocommon/image-viewer',
             // removed_rois
             var removed_rois = {};
 
-            console.log("ImageROI loaded", data);
+            console.log("ImageROI loaded", data);// eslint-disable-line no-console
 
             // validate the list of visible ROIs
             //removed_rois.visible = me._image_viewer_controller.checkRois(me._visible_roi_list, true);
-            console.log("Validated ROI Shape List", me._visible_roi_list);
+            console.log("Validated ROI Shape List", me._visible_roi_list);// eslint-disable-line no-console
 
             // validate the list of focusable ROIs
             //removed_rois.focusable = me._image_viewer_controller.checkRois(me._focusable_roi_list, true);
-            console.log("Validated Focusable ROI List", me._focusable_roi_list);
+            console.log("Validated Focusable ROI List", me._focusable_roi_list);// eslint-disable-line no-console
 
             var roi_list = M.qtypes.omerocommon.RoiShapeModel.toRoiShapeModel(data,
                 me._visible_roi_list, me._focusable_roi_list);
-            console.log("Loaded ROI Shapes Models", roi_list);
+            console.log("Loaded ROI Shapes Models", roi_list);// eslint-disable-line no-console
 
             if (!me._disable_roi_table) {
                 if (!me._roi_shape_table) {
@@ -416,7 +416,7 @@ define(['qtype_omerocommon/image-viewer',
             }
 
             me._image_viewer_controller.showRoiShapes(me._visible_roi_list);
-            console.log("Updated ROI table!!!");
+            console.log("Updated ROI table!!!");// eslint-disable-line no-console
 
             return removed_rois;
         };
@@ -428,7 +428,7 @@ define(['qtype_omerocommon/image-viewer',
          * @param event
          */
         prototype.onRoiShapeVisibilityChanged = function (event) {
-            console.log(event);
+            console.log(event);// eslint-disable-line no-console
             this.onRoiShapePropertyChanged(event, "visible", this._visible_roi_list);
         };
 
@@ -439,7 +439,7 @@ define(['qtype_omerocommon/image-viewer',
          * @param event
          */
         prototype.onRoiShapeFocusabilityChanged = function (event) {
-            console.log(event);
+            console.log(event);// eslint-disable-line no-console
             this.onRoiShapePropertyChanged(event, "focusable", this._focusable_roi_list);
         };
 

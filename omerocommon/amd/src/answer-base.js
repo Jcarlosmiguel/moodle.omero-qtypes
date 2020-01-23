@@ -48,7 +48,7 @@ define([
          * @param event
          */
         function notifyListeners(answer, event) {
-            console.log("notifying event...", event);
+            console.log("notifying event...", event);// eslint-disable-line no-console
             for (var i in answer._listeners) {
                 var listener = answer._listeners[i];
                 var callbackName = "on" + event.name.charAt(0).toUpperCase() + event.name.substr(1);
@@ -218,7 +218,7 @@ define([
          * @private
          */
         prototype._removeFeedbackImage = function (image) {
-            console.log("Deleting image", image);
+            console.log("Deleting image", image);// eslint-disable-line no-console
             if (image){
                 delete this._feedback_images[image.id];}
         };
@@ -255,7 +255,7 @@ define([
          * @param remove_form_inputs
          */
         prototype.loadDataFromFormInputs = function (answer_index, remove_form_inputs) {
-            console.log("Loading data from inputs...", this);
+            console.log("Loading data from inputs...", this);// eslint-disable-line no-console
             var me = this;
             var data = {};
             for (var i in me._answer_properties) {
@@ -282,12 +282,12 @@ define([
                 me._feedback_images[image.id] = image;
             }
 
-            console.log("Loading multi language elements...");
+            console.log("Loading multi language elements...");// eslint-disable-line no-console
             for (var editor_element_name in me._editors_map) {
                 var editor = me._editors_map[editor_element_name];
                 var locale_map_name = me._build_locale_map_name_of(editor_element_name, answer_index);
                 var id = 'id_' + locale_map_name;
-                console.log("Loading editor data...", id, locale_map_name);
+                console.log("Loading editor data...", id, locale_map_name);// eslint-disable-line no-console
                 editor.loadDataFromFormInputs(locale_map_name);
             }
             this._data = data;
@@ -299,7 +299,7 @@ define([
             var form = document.forms[0];
 
             if (!form) {
-                console.warn("Form not found!!!");
+                console.warn("Form not found!!!");// eslint-disable-line no-console
                 return;
             }
 
@@ -323,23 +323,23 @@ define([
                 }
             }
 
-            console.log("Saving multi language elements...", this._answer_number);
+            console.log("Saving multi language elements...", this._answer_number);// eslint-disable-line no-console
             for (element_name in this._editors_map) {
                 var editor = this._editors_map[element_name];
                 var locale_map_name = this._build_locale_map_name_of(element_name, answer_index);
                 id = 'id_' + locale_map_name;
-                console.log("Saving editor data...", id, locale_map_name);
+                console.log("Saving editor data...", id, locale_map_name);// eslint-disable-line no-console
 
                 hidden = document.getElementById(id);
                 if (!hidden) //hidden.val(value);
                 {
                     hidden = '<input ' +
                         'id="' + id + '" ' + 'name="' + locale_map_name + '" type="hidden" >';
-                    console.log("Creating the hidden field", id, element_name, locale_map_name);
+                    console.log("Creating the hidden field", id, element_name, locale_map_name);// eslint-disable-line no-console
                     M.qtypes.omerocommon.MoodleFormUtils.appendHiddenElement(this._answer_container, hidden);
-                    console.log("Created the hidden field", id, element_name, locale_map_name);
+                    console.log("Created the hidden field", id, element_name, locale_map_name);// eslint-disable-line no-console
                 } else {
-                    console.log("Found hidden field to save editor data...", id, element_name, locale_map_name);
+                    console.log("Found hidden field to save editor data...", id, element_name, locale_map_name);// eslint-disable-line no-console
                 }
 
                 editor.saveDataToFormInputs(locale_map_name);
@@ -407,7 +407,7 @@ define([
             var editor = new M.qtypes.omerocommon.MultilanguageAttoEditor(name, local_map_name, false);
             editor.init();
             this._editors_map[element_name] = editor;
-            console.log("Editors map", this._editors_map);
+            console.log("Editors map", this._editors_map);// eslint-disable-line no-console
         };
 
         //prototype._init_textarea_editor = function (element_name) {
@@ -441,7 +441,7 @@ define([
             var me = this;
             fraction_selector = document.getElementById(id + "_select");
             fraction_selector.onchange = function (data) {
-                console.log("Changed grade", data);
+                console.log("Changed grade", data);// eslint-disable-line no-console
                 me._data[element_name] = fraction_selector.options[fraction_selector.selectedIndex].value;
             };
         };
@@ -485,7 +485,7 @@ define([
         };
 
         prototype.onSelectedImage = function (image_info) {
-            console.log("Selected image", image_info);
+            console.log("Selected image", image_info);// eslint-disable-line no-console
             var me = this;
             me._modal_image_panel_ctrl.getImageModelManager().getImageDetails(function (image_details) {
                 var image = {
@@ -498,7 +498,7 @@ define([
                     properties: {},
                     lock: false
                 };
-                console.log(image);
+                console.log(image);// eslint-disable-line no-console
                 me._addFeedbackImage(image);
                 me._feedback_image_table.append(image);
             }, undefined, image_info.image_id);
@@ -508,7 +508,7 @@ define([
         prototype.onEditImage = function (event) {
             var image = this._getFeedbackImage(event.image.id);
             if (image) {
-                console.log("Selected image to edit", image);
+                console.log("Selected image to edit", image);// eslint-disable-line no-console
                 this._modal_image_panel_ctrl.show(this,
                     image.id, image.name,
                     image.description_locale_map,
@@ -522,7 +522,7 @@ define([
 
         prototype.onDeletedImage = function (event) {
             if (event) {
-                console.log("Delete image event...", event);
+                console.log("Delete image event...", event);// eslint-disable-line no-console
                 this._removeFeedbackImage(event.image);
             }
         };
@@ -537,12 +537,12 @@ define([
                 image.visiblerois = visible_rois;
                 image.focusablerois = focusable_rois;
                 this._feedback_image_table.updateRow(image);
-                console.log("Saved feedbackimage ... ", image);
+                console.log("Saved feedbackimage ... ", image);// eslint-disable-line no-console
             }
         };
 
         prototype.onClose = function () {
-            console.log("Closed ModalImagePanel editor");
+            console.log("Closed ModalImagePanel editor");// eslint-disable-line no-console
         };
 
         // return the class

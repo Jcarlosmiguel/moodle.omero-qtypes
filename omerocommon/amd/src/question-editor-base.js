@@ -237,7 +237,7 @@ define([
                     return errors.length === 0;
 
                 } catch (er) {
-                    console.error(er);
+                    console.error(er);// eslint-disable-line no-console
                     me._showDialogMessage(er.message);
                 }
             };
@@ -320,10 +320,10 @@ define([
                 $("#add_answer_button li").click(
                     function (e) {
                         var no_answers = $(e.target).attr("value");
-                        console.log("Click on ADD Answer no.", no_answers);
+                        console.log("Click on ADD Answer no.", no_answers);// eslint-disable-line no-console
                         window.last = e.target;
                         if (!no_answers){
-                            console.warn("The number of answer to add seems to be undefined!!!");}
+                            console.warn("The number of answer to add seems to be undefined!!!");}// eslint-disable-line no-console
                         else {
                             no_answers = parseInt(no_answers);
                             for (var i = 1; i <= no_answers; i++) {
@@ -333,7 +333,7 @@ define([
                     }
                 );
             } catch (e) {
-                console.error("Error while creating the toolbar", e);
+                console.error("Error while creating the toolbar", e);// eslint-disable-line no-console
             }
         };
 
@@ -399,24 +399,24 @@ define([
 
 
         prototype.saveMultilanguageElements = function () {
-            console.log("Saving multi language elements...");
+            console.log("Saving multi language elements...");// eslint-disable-line no-console
             for (var element_name in this._editor) {
 
                 var editor = this._editor[element_name];
                 var locale_map_name = element_name + "_locale_map";
                 var id = 'id_' + locale_map_name;
-                console.log("Saving editor data...", id, locale_map_name);
+                console.log("Saving editor data...", id, locale_map_name);// eslint-disable-line no-console
 
                 var hidden = document.forms[0].elements[locale_map_name];
                 if (!hidden) //hidden.val(value);
                 {
                     hidden = '<input ' +
                         'id="' + id + '" ' + 'name="' + locale_map_name + '" type="hidden" >';
-                    console.log("Creating the hidden field", id, name, locale_map_name);
+                    console.log("Creating the hidden field", id, name, locale_map_name);// eslint-disable-line no-console
                     M.qtypes.omerocommon.MoodleFormUtils.appendHiddenElement(document.forms[0], hidden);
-                    console.log("Created the hidden field", id, name, locale_map_name);
+                    console.log("Created the hidden field", id, name, locale_map_name);// eslint-disable-line no-console
                 } else {
-                    console.log("Found hidden field to save editor data...", id, name, locale_map_name);
+                    console.log("Found hidden field to save editor data...", id, name, locale_map_name);// eslint-disable-line no-console
                 }
 
                 editor.saveDataToFormInputs(locale_map_name, true);
@@ -425,7 +425,7 @@ define([
 
 
         prototype.buildAnswer = function (answer_number, fraction_options) {
-            console.error("You need to implement this method!!!", answer_number, fraction_options);
+            console.error("You need to implement this method!!!", answer_number, fraction_options);// eslint-disable-line no-console
         };
 
         prototype.addAnswer = function (disable_animiation, answer_index) {
@@ -470,7 +470,7 @@ define([
 
         prototype.removeAnswer = function (answer_id) {
             var i, last_answer_header;
-            console.log(this._answers);
+            console.log(this._answers);// eslint-disable-line no-console
             if (answer_id in this._answer_ids) {
                 var answer = this._answer_ids[answer_id];
                 if (answer) {
@@ -512,7 +512,7 @@ define([
 
 
         prototype.onChangeImageSelection = function (image_url, image_id) {
-            console.log("Image changed: ", "url=" + image_url, ", ID=" + image_id);
+            console.log("Image changed: ", "url=" + image_url, ", ID=" + image_id);// eslint-disable-line no-console
 
             var me = this;
 
@@ -564,15 +564,15 @@ define([
 
             // validate the list of visible ROIs
             removed_rois.visible = this._image_viewer_controller.checkRois(this._visible_roi_list, true);
-            console.log("Validated ROI Shape List", this._visible_roi_list);
+            console.log("Validated ROI Shape List", this._visible_roi_list);// eslint-disable-line no-console
 
             // validate the list of focusable ROIs
             removed_rois.focusable = this._image_viewer_controller.checkRois(this._focusable_roi_list, true);
-            console.log("Validated Focusable ROI List", this._focusable_roi_list);
+            console.log("Validated Focusable ROI List", this._focusable_roi_list);// eslint-disable-line no-console
 
             var roi_list = M.qtypes.omerocommon.RoiShapeModel.toRoiShapeModel(data,
                 this._visible_roi_list, this._focusable_roi_list);
-            console.log("Loaded ROI Shapes Models", roi_list);
+            console.log("Loaded ROI Shapes Models", roi_list);// eslint-disable-line no-console
 
             if (!this._roi_shape_table) {
                 this._roi_shape_table = new M.qtypes.omerocommon.RoiShapeTableBase(
@@ -584,7 +584,7 @@ define([
             this._roi_shape_table.appendRoiShapeList(roi_list);
             this._image_viewer_controller.showRoiShapes(this._visible_roi_list);
 
-            console.log("Updated ROI table!!!");
+            console.log("Updated ROI table!!!");// eslint-disable-line no-console
 
             return removed_rois;
         };
@@ -603,18 +603,18 @@ define([
                 $("[name=" + list_name + "]").val(list.join(","));
             });
 
-            console.log("Initialized list", list);
+            console.log("Initialized list", list);// eslint-disable-line no-console
         };
 
 
         prototype.onRoiShapeVisibilityChanged = function (event) {
-            console.log(event);
+            console.log(event);// eslint-disable-line no-console
             this.onRoiShapePropertyChanged(event, "visible", this._visible_roi_list);
         };
 
 
         prototype.onRoiShapeFocusabilityChanged = function (event) {
-            console.log(event);
+            console.log(event);// eslint-disable-line no-console
             this.onRoiShapePropertyChanged(event, "focusable", this._focusable_roi_list);
         };
 
@@ -648,7 +648,7 @@ define([
                 try {
                     me._image_properties = JSON.parse(me._image_properties);
                 } catch (e) {
-                    console.error(e);
+                    console.error(e);// eslint-disable-line no-console
                     me._image_properties = {};
                 }
             } else {me._image_properties = {};}
