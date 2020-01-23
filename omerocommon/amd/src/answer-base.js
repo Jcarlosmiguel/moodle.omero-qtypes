@@ -339,7 +339,8 @@ define([
                     M.qtypes.omerocommon.MoodleFormUtils.appendHiddenElement(this._answer_container, hidden);
                     console.log("Created the hidden field", id, element_name, locale_map_name);// eslint-disable-line no-console
                 } else {
-                    console.log("Found hidden field to save editor data...", id, element_name, locale_map_name);// eslint-disable-line no-console
+                    // eslint-disable-next-line no-console
+                    console.log("Found hidden field to save editor data...", id, element_name, locale_map_name);
                 }
 
                 editor.saveDataToFormInputs(locale_map_name);

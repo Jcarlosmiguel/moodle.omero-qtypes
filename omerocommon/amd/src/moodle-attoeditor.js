@@ -230,7 +230,8 @@ define([
             };
 
             me.setText = function (text, async) {
-                console.log("Setting text: " + text + " within the textarea: " + me.input_data_element_name + "editable");// eslint-disable-line no-console
+                // eslint-disable-next-line no-console
+                console.log("Setting text: " + text + " within the textarea: " + me.input_data_element_name + "editable");
                 if(!async){
                     var data_element = document.getElementById(me.input_data_element_name + "editable");
                     if (!data_element) {console.warn("AttoEditor of " +// eslint-disable-line no-console
@@ -258,7 +259,8 @@ define([
                 console.log("Getting text from " + "#" + me.input_data_element_name + "editable");// eslint-disable-line no-console
                 var data_element = document.getElementById(me.input_data_element_name + "editable");
                 if (!data_element) {
-                    console.warn("AttoEditor of " + me.input_data_element_name + " seems not initialized!");// eslint-disable-line no-console
+                    // eslint-disable-next-line no-console
+                    console.warn("AttoEditor of " + me.input_data_element_name + " seems not initialized!");
                     return undefined;
                 } else {return data_element.innerHTML;}
             };

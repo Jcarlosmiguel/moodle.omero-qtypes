@@ -158,7 +158,8 @@ define(['qtype_omerocommon/moodle-forms-utils'],
         prototype.saveDataToFormInputs = function (input_data_element_name, encode_text) {
 
             input_data_element_name = input_data_element_name || this.input_data_element_name;
-            console.log("Serializing " + this.input_data_element_name + " -- " + input_data_element_name);// eslint-disable-line no-console
+            // eslint-disable-next-line no-console
+            console.log("Serializing " + this.input_data_element_name + " -- " + input_data_element_name);
 
             // save the last changes
             this.save();
