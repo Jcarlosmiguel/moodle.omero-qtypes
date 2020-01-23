@@ -166,10 +166,10 @@ define([
         };
 
         prototype.containsROIs = function (roi_id_list) {
-            for (var i in roi_id_list)
-                if (this._roi_id_list.indexOf(roi_id_list[i]) !== -1)
-                    return true;
-            return false;
+            for (var i in roi_id_list){
+                if (this._roi_id_list.indexOf(roi_id_list[i]) !== -1){
+                    return true;}
+            return false;}//this is a complicated nested function which might require review
         };
 
         prototype.getROIsWithinGroup = function () {
@@ -178,12 +178,12 @@ define([
 
 
         prototype._init_roi_list = function () {
-            console.log("Answer", this._data.answer, this._data.answer);
+            console.log("Answer", this._data.answer, this._data.answer);// eslint-disable-line no-console
             var list = this._data.answer;//;$("[name*=answer\\[" + this._answer_number + "\\]]");
-            if (list && list.length > 0)
+            if (list && list.length > 0){
                 this._roi_id_list = list.split(",").map(function (e) {
                     return parseInt(e);
-                });
+                });}
         };
 
 
@@ -196,8 +196,8 @@ define([
 
             var select = '<div ' + 'id="' + id + '_roi_list" ' + 'name="' + name + '_answer_roi_list"></div>';
             var roi_list = $("[name*=" + element_name + "\\[" + this._answer_number + "\\]]");
-            if (roi_list.length === 0)
-                select += '<input type="hidden" name="' + name + '" value="">';
+            if (roi_list.length === 0){
+                select += '<input type="hidden" name="' + name + '" value="">';}
 
             var fraction_selector = $(select);
             this._form_utils.appendElement(this._answer_container, label, fraction_selector, false);
@@ -233,7 +233,7 @@ define([
                     var matches = invokedOn.prop('id').match(/(.+)-roi-shape-answer-option/);
                     var roi_shape_id = matches[1];
                     if (!roi_shape_id) {
-                        console.warn("Unable to identify the ROI id!!!");
+                        console.warn("Unable to identify the ROI id!!!");// eslint-disable-line no-console
                         return;
                     }
                     me.removeROIsFromGroup([parseInt(roi_shape_id)]);
@@ -259,8 +259,8 @@ define([
                     position = mouse + scroll;
 
                 // opening menu would pass the side of the page
-                if (mouse + menu > win && menu < mouse)
-                    position -= menu;
+                if (mouse + menu > win && menu < mouse){
+                    position -= menu;}
 
                 return position;
             }
@@ -275,7 +275,7 @@ define([
                         // Open context menu
                         $(this).on("contextmenu", function (e) {
                             // return native menu if pressing control
-                            if (e.ctrlKey) return;
+                            if (e.ctrlKey) {return;}
 
                             //open menu
                             var $menu = $(settings.menuSelector)

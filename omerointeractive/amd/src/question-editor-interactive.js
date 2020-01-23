@@ -38,12 +38,12 @@ define([
 
 
         function updateGroupButton(editor, selected_shapes) {
-            if (!selected_shapes)
-                selected_shapes = editor.getSelectedROIIds();
+            if (!selected_shapes){
+                selected_shapes = editor.getSelectedROIIds();}
 
             function handleOptionClick(e) {
                 var group_id = $(this).attr("value");
-                console.log("Selected ROI GROUP: " + group_id, e);
+                console.log("Selected ROI GROUP: " + group_id, e);// eslint-disable-line no-console
                 var selected_rois = editor.getSelectedROIIds();
                 if (selected_rois && selected_rois.length > 0) {
                     editor._answers[group_id].addROIsToGroup(selected_rois);
@@ -57,7 +57,7 @@ define([
                 button.html(""); // clear
                 for (var i in editor._answers) {
                     group = editor._answers[i];
-                    console.log(
+                    console.log(// eslint-disable-line no-console
                         "Selected ROIs", group.containsROIs(editor.getSelectedROIIds()),
                         "Checking GROUp", group, group.containsROIs(editor.getSelectedROIIds()));
                     if (group.containsROIs(editor.getSelectedROIIds())) {
@@ -127,22 +127,22 @@ define([
             for (var i  in this._answers) {
                 var answer = this._answers[i];
                 var unavailable_rois = this._image_viewer_controller.checkRois(answer.getROIsWithinGroup());
-                console.log(answer, unavailable_rois);
+                console.log(answer, unavailable_rois);// eslint-disable-line no-console
                 if (unavailable_rois && unavailable_rois.length > 0) {
                     answer.removeROIsFromGroup(unavailable_rois);
                     removed_rois_from_groups.push([(parseInt(i) + 1), unavailable_rois]);
-                    console.log("Removing not valid ROIs", unavailable_rois);
+                    console.log("Removing not valid ROIs", unavailable_rois);// eslint-disable-line no-console
                 }
             }
 
             var j;
             var message = "";
-            if (removed_rois.visible.length > 0)
+            if (removed_rois.visible.length > 0){
                 message += "<br> - " + removed_rois.visible.join(", ") + " ( " +
-                    M.util.get_string('roi_visible', 'qtype_omerocommon') + " )";
-            if (removed_rois.focusable.length > 0)
+                    M.util.get_string('roi_visible', 'qtype_omerocommon') + " )";}
+            if (removed_rois.focusable.length > 0){
                 message += "<br> - " + removed_rois.focusable.join(", ") + " ( " +
-                    M.util.get_string('roi_focusable', 'qtype_omerocommon') + " )";
+                    M.util.get_string('roi_focusable', 'qtype_omerocommon') + " )";}
             for (j in removed_rois_from_groups) {
                 message += "<br> - " + removed_rois_from_groups[j][1].join(", ") + " ( " +
                     M.util.get_string('answer', 'core') + " " + removed_rois_from_groups[j][0] + " )";
@@ -167,7 +167,7 @@ define([
         };
 
         prototype.onAddAnswer = function (answer) {
-            console.log("Added answer", answer);
+            console.log("Added answer", answer);// eslint-disable-line no-console
             answer._init_roi_list();
             answer.updateROIList();
             answer.addListener(this);
@@ -176,23 +176,23 @@ define([
 
 
         prototype.onRemoveAnswer = function (answer) {
-            console.log("Removed answer", answer);
+            console.log("Removed answer", answer);// eslint-disable-line no-console
             answer.removeListener(this);
             updateGroupButton(this);
         };
 
         prototype.onRoiShapesSelected = function (event) {
-            console.log("ROI Shape selected...", event);
+            console.log("ROI Shape selected...", event);// eslint-disable-line no-console
             updateGroupButton(this, event.shapes);
         };
 
         prototype.onAnswerROIsAdded = function (e) {
-            console.log("Added new ROIs ", e);
+            console.log("Added new ROIs ", e);// eslint-disable-line no-console
             this._roi_shape_table.deselectAll();
         };
 
         prototype.onAnswerROIsRemoved = function (e) {
-            console.log("Removed new ROIs ", e);
+            console.log("Removed new ROIs ", e);// eslint-disable-line no-console
             updateGroupButton(this);
         };
 
@@ -207,7 +207,7 @@ define([
                     }
                 }
             } catch (e) {
-                console.error(e);
+                console.error(e);// eslint-disable-line no-console
                 errors.push(e.message);
             }
             return errors;
@@ -218,14 +218,14 @@ define([
                 // extract configuration
                 var c = document.getElementsByName(config_element_id)[0];
                 var config = JSON.parse(c.value);
-                console.log("QuestionEditorInteractive configuration", config);
+                console.log("QuestionEditorInteractive configuration", config);// eslint-disable-line no-console
 
                 $(document).ready(
                     function () {
                         var instance = new M.qtypes.omerointeractive.QuestionEditorInteractive();
                         instance.initialize(config);
-                        if (M.cfg.developerdebug)
-                            window.qei = instance;
+                        if (M.cfg.developerdebug){
+                            window.qei = instance;}
                     }
                 );
             };

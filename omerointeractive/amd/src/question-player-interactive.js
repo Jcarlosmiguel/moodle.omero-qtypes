@@ -37,10 +37,10 @@ define([
         };
 
         function getControlColorClass(config, control) {
-            if (config[CONTROL_KEYS.ADD] === control || CONTROL_KEYS.ADD === control) return "btn-success";
-            else if (config[CONTROL_KEYS.EDIT] === control || CONTROL_KEYS.EDIT === control) return "btn-warning";
-            else if (config[CONTROL_KEYS.CLEAR] === control || CONTROL_KEYS.CLEAR === control) return "btn-danger";
-            else return "btn-default";
+            if (config[CONTROL_KEYS.ADD] === control || CONTROL_KEYS.ADD === control) {return "btn-success";}
+            else if (config[CONTROL_KEYS.EDIT] === control || CONTROL_KEYS.EDIT === control) {return "btn-warning";}
+            else if (config[CONTROL_KEYS.CLEAR] === control || CONTROL_KEYS.CLEAR === control) {return "btn-danger";}
+            else {return "btn-default";}
         }
 
 
@@ -62,7 +62,7 @@ define([
                 ctrl.removeClass(getControlColorClass(player._config, control));
                 ctrl.addClass("btn-default");
             }
-            console.log("Changing the " + control + " controller!!", $("#" + config[control]));
+            console.log("Changing the " + control + " controller!!", $("#" + config[control]));// eslint-disable-line no-console
         }
 
         function switchToActive(config, control) {
@@ -100,25 +100,25 @@ define([
             var result = {};
             var marked_shapes = [];
             var config = player._config;
-            console.log(config);
+            console.log(config);// eslint-disable-line no-console
             var shapes = me._image_viewer_controller.getShapes(me._config.available_shapes);
             var markers = me._image_viewer_controller.getMarkers();
-            console.log("Shapes", shapes);
-            console.log("Markers", markers);
+            console.log("Shapes", shapes);// eslint-disable-line no-console
+            console.log("Markers", markers);// eslint-disable-line no-console
             for (var i in markers) {
-                console.log("Index: " + i);
+                console.log("Index: " + i);// eslint-disable-line no-console
                 var marker = markers[i];
                 var center = marker.getCenter();
-                console.log("Checking marker", marker.id, center);
+                console.log("Checking marker", marker.id, center);// eslint-disable-line no-console
                 var matched_shape = "none";
                 for (var group in config.shape_groups) {
-                    console.log("Group: " + group);
+                    console.log("Group: " + group);// eslint-disable-line no-console
                     for (var k in config.shape_groups[group].shapes) {
-                        console.log("Shape id: " + k);
+                        console.log("Shape id: " + k);// eslint-disable-line no-console
                         var shape = me._image_viewer_controller.getShape(config.shape_groups[group].shapes[k]);
-                        console.log("Checking against ", shape, marked_shapes, shape.id in marked_shapes);
+                        console.log("Checking against ", shape, marked_shapes, shape.id in marked_shapes);// eslint-disable-line no-console
                         if (!(shape.id in marked_shapes) && shape.containsPoint(center.x, center.y)) {
-                            console.log("Contained in shape " + shape.id);
+                            console.log("Contained in shape " + shape.id);// eslint-disable-line no-console
                             matched_shape = {
                                 shape_id: shape.id,
                                 shape_group: group,
@@ -128,7 +128,7 @@ define([
                             break;
                         }
                     }
-                    if (matched_shape !== "none") break;
+                    if (matched_shape !== "none") {break;}
                 }
                 result[i] = matched_shape;
             }
@@ -146,7 +146,7 @@ define([
 
             me._response_form.append($(input));
 
-            console.log("Correction result: ", result);
+            console.log("Correction result: ", result);// eslint-disable-line no-console
         }
 
 
@@ -156,8 +156,8 @@ define([
             var marker_info_container = cid(config, CONTROL_KEYS.DEL) + "-" + marker_id + '_container';
             var label = marker_id;
             var marker_parts = marker_id.split("_");
-            if (marker_parts && marker_parts.length === 2)
-                label = marker_parts[1];
+            if (marker_parts && marker_parts.length === 2){
+                label = marker_parts[1];}
             label = M.util.get_string("marker", "qtype_omerointeractive") + " " + label;
             color = color ? 'style="color: ' + color + ';"' : '';
 
@@ -194,7 +194,7 @@ define([
                     'marker_info_container': marker_info_container
                 },
                 function (event) {
-                    console.log("Event", event);
+                    console.log("Event", event);// eslint-disable-line no-console
                     var el = $(event.target);
                     if (el.hasClass("glyphicon-eye-open")) {
                         me._image_viewer_controller.hideRoiShapes([event.data.marker_id]);
@@ -221,7 +221,7 @@ define([
 
         function showResults(player) {
             if (!player) {
-                console.warn("You have to provide the player object");
+                console.warn("You have to provide the player object");// eslint-disable-line no-console
                 return;
             }
 
@@ -229,20 +229,20 @@ define([
             var config = player._config;
             player._image_viewer_controller.showRoiShapes(config.visible_rois);
             player._image_viewer_controller.showRoiShapes(config.available_shapes);
-            if (!config.answers)
-                console.log("No answer found!!!");
+            if (!config.answers){
+                console.log("No answer found!!!");}// eslint-disable-line no-console
             else {
                 for (var i in config.answers.markers) {
                     var shape = config.answers.shapes[i];
                     var marker = config.answers.markers[i];
                     var marker_color;
-                    console.log("Check Marker: ", marker, markers_config);
-                    if (shape === "none" || shape.fraction <= 0)
-                        marker_color = COLORS.wrong;
-                    else if (config.max_markers == 1 && shape.fraction < 1)
-                        marker_color = COLORS.partially_correct;
-                    else
-                        marker_color = COLORS.correct;
+                    console.log("Check Marker: ", marker, markers_config);// eslint-disable-line no-console
+                    if (shape === "none" || shape.fraction <= 0){
+                        marker_color = COLORS.wrong;}
+                    else if (config.max_markers == 1 && shape.fraction < 1){
+                        marker_color = COLORS.partially_correct;}
+                    else{
+                        marker_color = COLORS.correct;}
                     if (marker_color) {
                         markers_config.fill_color = marker_color;
                         markers_config.stroke_color = marker_color;
@@ -257,10 +257,10 @@ define([
                 selector = "#" + ((f && f.attr("id")) ?
                         f.attr("id") : config.question_answer_container) + selector;
                 $(selector).each(function () {
-                    console.log("Updating properties of the ROI shape:", $(this).attr("roi-shape-id"));
+                    console.log("Updating properties of the ROI shape:", $(this).attr("roi-shape-id"));// eslint-disable-line no-console
                     var shape_id = $(this).attr("roi-shape-id");
                     var shape = player._image_viewer_controller.getShape(shape_id);
-                    console.log("Check the current shape", shape);
+                    console.log("Check the current shape", shape);// eslint-disable-line no-console
                     if (shape) {
                         $(this).css("color", shape.toJSON().stroke_color);
                         $(this).click(function () {
@@ -282,7 +282,7 @@ define([
                             'btn_id': 'hide_' + el_ctrl.attr("roi-shape-id")
                         },
                         function (event) {
-                            console.log("Event", event);
+                            console.log("Event", event);// eslint-disable-line no-console
                             var el = $(event.target);
                             if (el.hasClass("glyphicon-eye-open")) {
                                 me._image_viewer_controller.hideRoiShapes([event.data.marker_id]);
@@ -311,12 +311,12 @@ define([
             var me = player;
             var config = me._config;
             me._image_viewer_controller.open(true, function () {
-                console.log("Question Player initialized!!!", config);
+                console.log("Question Player initialized!!!", config);// eslint-disable-line no-console
 
                 var img_size = me._image_viewer_controller.getImageSize();
                 var markers_size = ((img_size.width + img_size.height) / 2) * 0.0025;
                 markers_config.markers_size = markers_size;
-                console.log(markers_size);
+                console.log(markers_size);// eslint-disable-line no-console
 
                 me._image_viewer_controller
                     .configureMarkingTool(markers_config, parseInt(config.max_markers));
@@ -326,7 +326,7 @@ define([
                 if (!config.correction_mode) {
                     me._image_viewer_controller.showRoiShapes(config.visible_rois, true);
                 } else {
-                    console.log("Answers: ", config.answers);
+                    console.log("Answers: ", config.answers);// eslint-disable-line no-console
                     showResults(me);
                 }
 
@@ -385,24 +385,24 @@ define([
 
             var me = this;
 
-            if (me.initialized) console.log("Already Initialized");
+            if (me.initialized) {console.log("Already Initialized");}// eslint-disable-line no-console
             else {
 
                 this.parent.initialize.call(this, config);
 
                 me._answer_input_name = config.answer_input_name;
-                console.log("Setted the answer prefix", me._answer_input_name);
+                console.log("Setted the answer prefix", me._answer_input_name);// eslint-disable-line no-console
 
                 $("#" + config[CONTROL_KEYS.ADD]).click(function () {
-                    if (switchToActive(config, config[CONTROL_KEYS.ADD]))
-                        me._image_viewer_controller.enableAddMarkers();
-                    else me._image_viewer_controller.disableMarkingTool();
+                    if (switchToActive(config, config[CONTROL_KEYS.ADD])){
+                        me._image_viewer_controller.enableAddMarkers();}
+                    else {me._image_viewer_controller.disableMarkingTool();}
                 });
 
                 $("#" + config[CONTROL_KEYS.EDIT]).click(function () {
-                    if (switchToActive(config, config[CONTROL_KEYS.EDIT]))
-                        me._image_viewer_controller.enableMoveMarkers();
-                    else me._image_viewer_controller.disableMarkingTool();
+                    if (switchToActive(config, config[CONTROL_KEYS.EDIT])){
+                        me._image_viewer_controller.enableMoveMarkers();}
+                    else {me._image_viewer_controller.disableMarkingTool();}
                 });
 
                 $("#" + config[CONTROL_KEYS.CLEAR]).click(function () {
@@ -421,7 +421,7 @@ define([
                 // configure the test mode
                 if (!config.correction_mode) {
                     var form = $("#" + config.enable_add_makers_ctrl_id).parents("form");
-                    if (!form) console.error("Unable to find the form");
+                    if (!form) {console.error("Unable to find the form");}// eslint-disable-line no-console
                     else {
                         me._response_form = form;
                         form.on("submit", function () {
@@ -430,9 +430,9 @@ define([
                     }
 
                     $("#" + config.image_annotations_canvas_id).on('marker_created', function (event, marker_id) {
-                        console.log('A new marker with ID ' + marker_id + ' was created', event);
+                        console.log('A new marker with ID ' + marker_id + ' was created', event);// eslint-disable-line no-console
                         if (isMaxMarkerNumber(me)) {
-                            console.log("Reached max number of markers: " + config.max_markers);
+                            console.log("Reached max number of markers: " + config.max_markers);// eslint-disable-line no-console
                             setEnabledMarkerControl(me, CONTROL_KEYS.ADD, false);
                             me._image_viewer_controller.disableMarkingTool();
                         }
@@ -443,9 +443,9 @@ define([
                     });
 
                     $("#" + config.image_annotations_canvas_id).on('marker_deleted', function (event, marker_id) {
-                        console.log("Remove marker with ID '" + marker_id + "'", event);
-                        if (!isMaxMarkerNumber(me))
-                            setEnabledMarkerControl(me, CONTROL_KEYS.ADD, true);
+                        console.log("Remove marker with ID '" + marker_id + "'", event);// eslint-disable-line no-console
+                        if (!isMaxMarkerNumber(me)){
+                            setEnabledMarkerControl(me, CONTROL_KEYS.ADD, true);}
                         if (me._image_viewer_controller.getMarkers().length === 0) {
                             setEnabledMarkerControl(me, CONTROL_KEYS.EDIT, false);
                             setEnabledMarkerControl(me, CONTROL_KEYS.CLEAR, false);
@@ -485,7 +485,7 @@ define([
                     return val;
                 })
             };
-            console.log(result);
+            console.log(result);// eslint-disable-line no-console
             return JSON.stringify(result);
         };
 
@@ -497,11 +497,11 @@ define([
             // extract configuration
             var c = document.getElementById(config_element_id);
             var config = JSON.parse(c.value);
-            console.log("QuestionPlayerInteractive configuration", config);
+            console.log("QuestionPlayerInteractive configuration", config);// eslint-disable-line no-console
             // instantiate the class and
             var instance = new M.qtypes.omerointeractive.QuestionPlayerInteractive();
             instance.initialize(config);
-            console.log("Question interactive player initialized!!!");
+            console.log("Question interactive player initialized!!!");// eslint-disable-line no-console
         };
 
         return qpiClass;
